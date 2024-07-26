@@ -43,7 +43,7 @@ jobs:
           runs-on: ubuntu-latest
           steps:
           - name: use an action to checkout the repository
-            uses: actions/checout@v4
+            uses: actions/checkout@v4
             
           - name: use actions/setup-node action to setup NodeJS of version 18
             uses: actions/setup-node@v3
