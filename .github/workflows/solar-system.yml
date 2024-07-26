@@ -93,8 +93,7 @@ jobs:
               -e MONGO_USERNAME=$MONGO_USERNAME \
               -e MONGO_PASSWORD=$MONGO_PASSWORD \
               ${{ vars.docker_name }}/solar-system:${{ github.sha }}
-          
-          echo testing image      
+               
           wget -q -o - 127.0.0.1:3000/live | grep live   
       
           
