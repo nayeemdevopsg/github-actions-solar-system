@@ -87,7 +87,6 @@ jobs:
       
       - name: Docker test
         run: |
-          docker images
           docker run --name solar-system-app  -d \
               -p 3000:3000 \
               -e MONGO_URI=$MONGO_URI \
@@ -100,6 +99,7 @@ jobs:
       
           
       - name: Push Image
+        if: success()
         uses: docker/build-push-action@v6
         with:
          context: .
