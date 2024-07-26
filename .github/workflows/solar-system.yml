@@ -78,11 +78,11 @@ jobs:
           username: ${{ vars.docker_name }}
           password: ${{ secrets.docker_pass }}
 
-      - name: Build and push
+      - name: Build
         uses: docker/build-push-action@v6
         with:
          context: .
-         push: true
+         push: false
          tags: ${{ vars.docker_name }}/solar-system:${{ github.sha }}
       
       - name: Docker test
@@ -96,6 +96,14 @@ jobs:
               ${{ vars.docker_name }}/solar-system:${{ github.sha }}
           
           echo "testing iamge"      
-          wget -q -o - 127.0.0.1:3000/live | grep live      
+          wget -q -o - 127.0.0.1:3000/live | grep live   
+      
+          
+      - name: Push Image
+        uses: docker/build-push-action@v6
+        with:
+         context: .
+         push: true
+         tags: ${{ vars.docker_name }}/solar-system:${{ github.sha }}
       
 
